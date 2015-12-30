@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # coding=utf-8
-import urllib,sys,MySQLdb,chardet,socket
+import urllib,sys,MySQLdb,chardet,socket,datetime
 from BeautifulSoup import BeautifulSoup
 timeout=2
 socket.setdefaulttimeout(timeout)
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
+start = datetime.datetime.now()
 db = MySQLdb.connect("localhost","root","","banner",charset='utf8')
 cursor = db.cursor()
 openfile = open("in.txt",'r')
@@ -31,13 +32,18 @@ for read in openfile.readlines():
         read_s=str(read)
         banner_s=str(banner)
         title_s=str(title)
-        print str(read)+'  '+str(banner)+'  '+str(title)
-        sql = "INSERT INTO info(domain,banner,title)  VALUES ('%s', '%s', '%s')" % (read_s,banner_s,title_s)
+        title_s=title_s.replace("\r\n"," ")
+        print str(read)+'  '+str(banner)+'  '+title_s
+        #sql = "INSERT INTO info(domain,banner,title)  VALUES ('%s', '%s', '%s')" % (read_s,banner_s,title_s)
     except Exception, e:
         print str(e)
+'''
     try:
         cursor.execute(sql)
         db.commit()
     except:
         db.rollback()
 db.close()
+'''
+end = datetime.datetime.now()
+print 'use time '+str(end-start)
