@@ -40,7 +40,6 @@ for read in openfile.readlines():
         title_s=title_s.replace("\r\n"," ")
         title_s=title_s.replace("<title>","")
         title_s=title_s.replace("</title>","")
-        #print str(read)+'  '+str(banner)+'  '+title_s
         sql =  (read_s,banner_s,title_s)
         sql_list.append(sql)
         print '.',
@@ -48,6 +47,5 @@ for read in openfile.readlines():
         str(e)
 writer.writerows(sql_list)
 csvfile.close()
-
 end = datetime.datetime.now()
 print '\n'+'use time '+str(end-start)
