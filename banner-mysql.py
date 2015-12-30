@@ -7,6 +7,7 @@ socket.setdefaulttimeout(timeout)
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 start = datetime.datetime.now()
+sql_list=[]
 db = MySQLdb.connect("localhost","root","","banner",charset='utf8')
 cursor = db.cursor()
 openfile = open("in.txt",'r')
@@ -23,8 +24,10 @@ for read in openfile.readlines():
         web_encoding = encoding_content['encoding']
         if web_encoding == 'utf-8' or web_encoding == 'UTF-8':
             content_1 = content
+            print '.',
         else :
             content_1 = content.decode('gbk','ignore').encode('utf-8')
+            print '.',
         soup = BeautifulSoup(content_1)
         title= soup.find('title')
         banner=webServerType.strip()
@@ -32,18 +35,26 @@ for read in openfile.readlines():
         read_s=str(read)
         banner_s=str(banner)
         title_s=str(title)
+        title_s=title_s.replace("None"," ")
         title_s=title_s.replace("\r\n"," ")
-        print str(read)+'  '+str(banner)+'  '+title_s
-        #sql = "INSERT INTO info(domain,banner,title)  VALUES ('%s', '%s', '%s')" % (read_s,banner_s,title_s)
+        title_s=title_s.replace("<title>","")
+        title_s=title_s.replace("</title>","")
+        #print str(read)+'  '+str(banner)+'  '+title_s
+        sql = "INSERT INTO info(domain,banner,title)  VALUES ('%s', '%s', '%s')" % (read_s,banner_s,title_s)
+        sql_list.append(sql)
+        print '.',
     except Exception, e:
-        print str(e)
-'''
-    try:
-        cursor.execute(sql)
+        pass
+
+try:
+    for sql_n in sql_list:
+        cursor.execute(sql_n)
         db.commit()
-    except:
+
+except:
+        #print sql_n
         db.rollback()
 db.close()
-'''
+
 end = datetime.datetime.now()
-print 'use time '+str(end-start)
+print '\n'+'use time '+str(end-start)
