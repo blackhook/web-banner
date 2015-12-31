@@ -46,8 +46,8 @@
       <file leaf-file-name="bannerscan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bannerscan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.0568402">
-              <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.10982659">
+              <caret line="9" column="312" selection-start-line="9" selection-start-column="312" selection-end-line="9" selection-end-column="312" />
               <folding />
             </state>
           </provider>
@@ -398,7 +398,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451556007421</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add thread">
+      <created>1451565330577</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1451565330577</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -473,8 +479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bannerscan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.0568402">
-          <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.10982659">
+          <caret line="9" column="312" selection-start-line="9" selection-start-column="312" selection-end-line="9" selection-end-column="312" />
           <folding />
         </state>
       </provider>
